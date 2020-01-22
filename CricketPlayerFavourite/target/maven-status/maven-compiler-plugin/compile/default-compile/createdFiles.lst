@@ -1,0 +1,8 @@
+com/example/demo/exception/FavouriteAlreadyExistsException.class
+com/example/demo/dao/FavouriteDAO.class
+com/example/demo/App.class
+com/example/demo/model/Favourite.class
+com/example/demo/service/FavouriteServiceImpl.class
+com/example/demo/exception/FavouriteNotFoundException.class
+com/example/demo/service/FavouriteService.class
+com/example/demo/controller/FavouriteController.class

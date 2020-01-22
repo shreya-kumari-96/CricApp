@@ -1,0 +1,364 @@
+.img_s{
+  height: 30px;
+  width: 30px;
+}
+.logo{
+  font-size:25px;
+}
+.btn
+{
+  font-size:20px !important;
+}
+.navheader
+{
+  background-color: black !important;
+  /* position: fixed; */
+}
+.nav-link
+{
+  color: white !important;
+  font-size: 20px !important;
+  padding-right: 20px !important;
+}
+.dropdown-toggle{
+  color: yellowgreen;
+  background-color: black;
+}
+.navheadercollapse
+{
+  margin-left: 200px;
+}
+.navheader a:hover
+{
+  background-color: black !important;
+}
+.search
+{
+  margin-right: 200px;
+  color: white;
+}
+.logout
+{
+  color: green;
+  margin-right: 30px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Style the search field */
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+/* Style the submit button */
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+form.example{
+  margin-right: 200px;
+}
+.section1{
+  background-image: url("../../assets/back6.jpg");
+  
+  width: 55%;
+  margin-left: 23%;
+  /* height: 2000px; */
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-size: cover; 
+  padding: 0%;
+  color: aliceblue;
+  /* justify-content: center; */
+  text-align: center;
+  
+  } 
+.s1d1
+{
+  width:700px;
+}
+/* table, thead, tbody,td,th
+{
+  border: 1px solid black;
+} */
+.graph
+{
+height: 300px;
+width:550px;
+background-color:white;
+margin-left: 20%;
+}
+
+
+.chart-bar .chart-colors{
+color: #4CAF50;
+}
+.run{
+width: 60px;
+background-color:blue ;
+float: left;
+margin-left: 20px;
+}
+.wkts
+{
+width: 58px;
+background-color: red;
+float: left;
+margin-left: 20px;
+}
+.cardpic{
+  text-align: center;  
+  margin-top: 2em; 
+  width: 150px;
+  height: 200px;
+  object-fit:cover;
+  border-radius: 8px;
+  border: 5px solid rgb(223, 214, 214);
+}
+
+table {
+/* margin-left: 30em;  */
+text-align: center;
+
+border: 1px solid black;
+position: center;
+}
+h3 {
+font-size: 30px;
+line-height: 40px;
+font-family: 'Ultra', sans-serif;  
+text-transform: uppercase;
+text-shadow: 0 2px white, 0 3px #777;
+position: relative;
+}
+.name1{
+ text-align: center;
+}
+.name{
+ text-align: center;
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ font-size: 20px;
+}
+.tabhead{
+ text-decoration: underline;
+ margin: 2em 0 0.5em 0;
+font-weight: 600;
+font-family: 'Titillium Web', sans-serif;
+text-align: center;
+font-size: 18px;
+line-height: 20px;
+color: #f5f6f7;
+
+}
+.fa-heart:hover{
+  color:red !important;
+}
+.fa-heart-o:hover{
+  color:red !important;
+}
+
+/* table.s1d1 {
+font-family: verdana,arial,sans-serif;
+font-size:11px;
+color:#333333;
+border-width: 1px;
+border-color: #999999;
+border-collapse: collapse;
+}
+table.s1d1 th {
+background-color: rgb(185, 96, 80);
+border-width: 1px;
+padding: 8px;
+border-style: solid;
+border-color: #999999;
+color: #f1f1f1;
+/* font-family: 'Anton', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Teko', sans-serif; 
+font-size: 20px;
+
+} 
+table.s1d1 td {
+background-color: turquoise;
+border-width: 1px;
+padding: 8px;
+font-weight: bold;
+border-style: solid;
+border-color: #999999;
+font-family: 'Anton', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-size: 10px;
+
+}*/
+
+/* Style the navigation menu */
+.heading{
+  /* background-color: rgb(184, 218, 247); */
+  /* border-width: 1px; */
+  padding: 8px;
+  /* border-style: solid; */
+  /* border-color: #999999; */
+  color: black;
+}
+.table1
+{
+  color: black;
+  /* border-color: white; */
+  width: 90%;
+}
+.table2{
+  color: black;
+  /* border-color: white; */
+  width: 90%;
+}
+.table3{
+  color: black;
+  /* border-color: white; */
+  width: 90%;
+  height: 100px;
+
+  }
+  th, td { 
+    width:150px; 
+    text-align:center; 
+  
+    padding:5px 
+  }
+  th{
+    background-color: lightgray;
+  }
+  .table3row2{
+    background-color: white !important;
+  }
+  .table4rowcol{
+    background-color: white !important;
+  }
+.table4{
+  color: black;
+  /* border-color: white; */
+  width: 90%;
+}
+tr:nth-child(odd) { 
+  background-color: lightgray; 
+} 
+tr:nth-child(even) { 
+  background-color: white
+} 
+.navbar {
+width: 100%;
+background-color: #555;
+overflow: auto;
+}
+
+/* Navigation links */
+.navbar a {
+float: left;
+padding: 12px;
+color: white;
+text-decoration: none;
+font-size: 17px;
+width: 10%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+text-align: center; /* If you want the text to be centered */
+}
+
+/* Add a background color on mouse-over */
+.navbar a:hover {
+background-color: rgb(56, 52, 52);
+}
+
+/* Style the current/active link */
+.navbar a.active {
+background-color: #4CAF50;
+}
+
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 500px) {
+.navbar a {
+  float: none;
+  display: block;
+  width: 100%;
+  text-align: left; /* If you want the text to be left-aligned on small screens */
+}
+}
+
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: black;
+  background-color: white;
+  border:goldenrod;
+  border-radius: 20px;
+  box-shadow: 0 7px #999;
+  }
+  
+  .button:hover {background-color: lightgray}
+  
+  .button:active {
+  background-color: lightgray;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+  }
+  
+
+/* .tabledata
+{
+  border: 1px solid black;
+} */
+.footerimg{
+  height: 70px;
+  width: 70px;
+}
+.list-unstyled{
+  color: white;
+ 
+} 
+.titlefoot{
+  color: green;
+}
+
+footer {
+  
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(26, 56, 17);
+  color: white;
+  text-align: center;
+}
+
+a{
+    color: white;
+}
+.footer-copyright{
+  background-color:rgba(12, 3, 3, 0.836);
+}

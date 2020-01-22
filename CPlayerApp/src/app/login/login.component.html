@@ -1,0 +1,171 @@
+<html>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light navheader">
+    <a class="navbar-brand" [routerLink]="['/dashboard']">
+        <!-- <div class="nav-link"> -->
+                <img src="../../assets/logo.png" height="45%" width="50%"><b class="logo">Cricket Player</b>
+        <!-- </div> -->
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse navheadercollapse" id="navbarSupportedContent">
+
+         <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item active">
+                <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+            </li>&nbsp;&nbsp; -->
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="/dashboard">Features</a>
+
+            </li>  -->
+            <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>  -->
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="#">ContactUs</a>
+            </li> -->
+        </ul>
+
+
+        <!-- <form class="example" action="action_page.php">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form> -->
+        <!-- <form class="example" action="action_page.php">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form> -->
+    
+    
+            <!-- <button class="btn btn-outline-success my-2 my-sm-0 loginbutton" type="submit" (click)=login()>Login</button> -->
+    
+
+    </div>
+</nav>
+
+<section class="section1">
+        <div class="s1d1">Login</div>
+        <div>
+                <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()"  >
+                   <br />
+                   <label for="userid"> </label>
+                   <input class="userid" matInput type="text" formControlName="userid" placeholder="Username">
+                   <div>
+                            <small *ngIf="userid.invalid && (userid.dirty || userid.touched)">
+                                User id is a Mandatory Field
+                            </small>
+                        </div>
+                            <br />
+                   <!-- <input matInput type="text" [formControl]="userid"> <br /><br /> -->
+                   <label for="password"></label>
+                   <input class="password" matInput type="password" formControlName="password" placeholder="Password">
+                            <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                                <small *ngIf="password.errors.required">
+                                    Password cannot be left blank !!
+                                </small>
+                                <small *ngIf="password.errors.minlength">
+                                    Password Must Have MInimum 6 Characters !!
+                                </small>
+                            </div>
+                            <br />
+                            <br />
+                   <!-- <input type="password" [formControl]="password"> <br /> <br /> -->
+                    <button  type="submit" [disabled]="!loginForm.valid" class="loginbutton">Login</button><br /><br /><br />
+                    <div class="links">
+                    <a href="" class="register-link">Forgot password?</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   <a [routerLink]="['/signup']" class="register-link">Not registered yet?</a><br /><br />
+                   </div>
+                   <small>{{submitMessage}}</small>
+                </form>
+                </div>
+</section>
+
+<!--footer started-->
+<footer class="page-footer font-small blue pt-4 ">
+    <div class="container-fluid text-center text-md-left">
+        <div class="row">
+            <div class="col-md-6 mt-md-0 mt-3">
+                <h5 class="text-uppercase">Championing World Cricket</h5>
+                <!-- <img class ="footerimg" src="../../assets/logoc.png"> -->
+                <h1 class="titlefoot">CPlayer</h1>
+                <p>Follow CPlayer On Social</p>
+                <div>
+                    <a href='http://www.facebook.com'>
+                        <i class="fa fa-facebook-square" style="font-size:35px;color:white"></i>
+                    </a> &nbsp; &nbsp;
+                    <a href='http://www.youtube.com'>
+                        <i class="fa fa-youtube-play" style="font-size:35px;color:white"></i>
+                    </a> &nbsp; &nbsp;
+                    <a href='http://www.linkedin.com'>
+                        <i class="fa fa-linkedin-square" style="font-size:35px;color:white"></i>
+                    </a> &nbsp; &nbsp;
+                    <a href='http://www.instagram.com'>
+                        <i class="fa fa-instagram" style="font-size:35px;color:white"></i>
+                    </a> &nbsp; &nbsp;
+                </div>
+            </div>
+            <hr class="clearfix w-100 d-md-none pb-3">
+            <div class="col-md-3 mb-md-0 mb-3 ">
+                </div>
+            <div class="col-md-3 mb-md-0 mb-3 ">
+                <h5 class="text-uppercase">Cricket News</h5><br>
+                <ul class="list-unstyled">
+                    <!-- <li>
+                        <a href="https://www.espncricinfo.com/scores/" target="_blank">Live Scores Index</a>
+                    </li><br> -->
+                    <li>
+                        <a href="http://www.espncricinfo.com/ci/content/story/index.html" target="_blank">News Index</a>
+                    </li><br>
+                    <li>
+                        <a href="https://www.icc-cricket.com/champions-trophy/media-releases" target="_blank">Media Releases</a>
+                    </li><br>
+                    <li>
+                        <a href="https://www.icc-cricket.com/video/by-country" target="_blank">Video Home</a>
+                    </li><br>
+                    <li>
+                        <a href="http://www.espncricinfo.com/ci/content/image/index.html" target="_blank">Photos</a>
+                    </li><br>
+                </ul>
+            </div>
+            <!-- <div class="col-md-3 mb-md-0 mb-3">
+                <h5 class="text-uppercase">RANKINGS</h5><br>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://www.icc-cricket.com/rankings/mens/overview">Overview</a>
+                    </li><br>
+                    <li>
+                        <a href="https://www.icc-cricket.com/rankings/mens/team-rankings/test">Team Rankings</a>
+                    </li><br>
+                    <li>
+                        <a href="https://www.icc-cricket.com/rankings/mens/player-rankings/test">Player Rankings</a>
+                    </li><br>
+                    <li>
+                        <a href="https://www.icc-cricket.com/rankings/about">About the Rankings</a>
+                    </li><br>
+                    <li>
+                        <a href="https://www.icc-cricket.com/rankings/faqs">Rankings FAQs</a>
+                    </li>
+                </ul>
+            </div> -->
+        </div>
+    </div>
+    <div class="footer-copyright py-3">© 2020 Copyright:
+        <a class="footer_url" href="https://www.cricapi.com/"> CricketPlayer.com</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Developed by: Rutul, Shreya, Suprita
+    </div>
+
+</footer>
+<!--footer closed-->
+
+</html>

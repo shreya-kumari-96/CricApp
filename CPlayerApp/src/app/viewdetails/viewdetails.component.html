@@ -1,0 +1,329 @@
+<html>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light navheader">
+    <a class="navbar-brand" [routerLink]="['/dashboard']">
+        <!-- <div class="nav-link">CPlayer</div> -->
+        <img src="../../assets/logo.png" height="45%" width="50%"><b class="logo">Cricket Player</b>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse navheadercollapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="/dashboard">Home</a>
+
+            </li> -->
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/favourite']">Favourite <span class="sr-only">(current)</span></a>
+            </li>&nbsp;&nbsp;
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/recommendation']">Recommendation</a>
+
+            </li>
+            <!-- <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown link
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </li>  -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/stastics']">Statistics</a>
+            </li>
+        </ul>
+
+        <!-- <form class="example" action="action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form> -->
+
+        <div class="search">
+            <form [formGroup]="searchForm" (ngSubmit)="searchSubmit()">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search: <i
+                        class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <button *ngIf="loginflag==true" class="btn btn-outline-success my-2 my-sm-0 logout" (click)="logoutSubmit()">Logout</button>
+           
+        <div *ngIf="userImage">
+                    <img class="rounded-circle" [src]="userImage" alt="..." height=50 *ngIf="userImage">
+        </div>
+        <!-- <img class="rounded-circle" [src]="userImage" alt="..." height=50 *ngIf="userImage"> -->
+        <button *ngIf="loginflag==false" class="btn btn-outline-success my-2 my-sm-0" type="submit"
+            (click)=login()>Login</button>
+
+    </div>
+</nav>
+
+<section class="section1">
+        <div>
+            <div class="center">
+                <img src="{{imageurl}}" alt="Photo" class="cardpic">
+                <br /><br />
+                <h3 class="name1">{{fullName}}</h3>
+                <!-- Player id: {{playerid}}<br /> -->
+                <div class="name">
+                        <img [src]="img">  {{country}}<br /><br />
+                    
+                </div>
+            </div>
+            <br />
+            <div style="overflow-x:auto;">
+            <table class="table1" align="center">
+                
+                <tr>
+                <td class="heading" >CurrentAge</td>
+                <td>{{currentage}}</td>
+                </tr>
+                <tr>
+                        <td class="heading">Born</td>
+                        <td>{{born}}</td>
+                </tr>
+                <tr>
+                    <td class="heading">BattingStyle</td>                   
+                    <td>{{battingstyle}}</td>
+                </tr>
+                <tr>
+                    <td class="heading" >BowlingStyle</td>
+                    <td>{{bowlingstyle}}</td>
+                </tr>
+            </table>
+        </div>
+    
+            
+            <h4 class="tabhead">Major Teams</h4>
+            <div style="overflow-x:auto;">
+            <table class="table2" align="center">
+                           
+                <tbody>
+                    <tr>
+                <td *ngFor="let m of majordata">{{m}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+            <!-- <div ng-repeat="result in results" ng-class="'color' + ($index % 3)">
+                    <div>
+                        <p>{{result.myText}}</p>
+                    </div>
+                </div> -->
+            <br/><br/>
+            <div style="overflow-x:auto;">
+            <div class="graph">
+                <canvas id="barChart" class="chart chart-bar" chart-series="series">{{chart}}</canvas>
+                <div *ngIf="flag==true" >    
+                    <h6 class="run">Batting</h6>
+                    <h6 class="wkts">Bowling</h6> 
+                </div> 
+                <div *ngIf="bowl==true" >    
+                    
+                    <h6 class="wkts">Bowling</h6> 
+                </div>
+                <div *ngIf="bat==true" >    
+                    
+                    <h6 class="run">Batting</h6> 
+                </div> 
+    
+            </div>
+            </div>
+            
+            <!-- <br /><br /> -->
+            <!-- <div *ngIf="flag==true" class="graph">
+                <canvas id="barChart2">{{chart2}}</canvas>
+                <h6 class="run">Runs</h6>
+                <h6 class="wkts">Wickets</h6> 
+            </div> -->
+    
+            <br />
+            <h4 class="tabhead">Batting Performance</h4>
+            <div style="overflow-x:auto;">
+                <table class="table3" align="center">
+                    <thead>
+                        <tr class="table3row1">
+                            <!-- <th>50</th>
+                        <th>100</th> -->
+                            <th>League</th>
+                            <th>St</th>
+                            <th>Ct</th>
+                            <!-- <th>6s</th>
+                        <th>4s</th> -->
+                            <th>SR</th>
+                            <th>BF</th>
+                            <th>Ave</th>
+                            <th>HS</th>
+                            <th>Runs</th>
+                            <th>NO</th>
+                            <th>Inns</th>
+                            <th>Mat</th>
+                        </tr>
+                    </thead>
+                   
+                    <tbody *ngFor="let s of fbatdata">
+                        <tr class="table3row2">
+                            <!-- <td>{{s.50}}</td> -->
+                            <!-- <td>{{s.100}}</td> -->
+                            <td>{{s.type}}</td>
+                            <td>{{s.St}}</td>
+                            <td>{{s.Ct}}</td>
+                            <!--<td>{{s.6s}}</td>
+                            <td>{{s.4s}}</td>-->
+                            <td>{{s.SR}}</td>
+                            <td>{{s.BF}}</td>
+                            <td>{{s.Ave}}</td>
+                            <td>{{s.HS}}</td>
+                            <td>{{s.Runs}}</td>
+                            <td>{{s.NO}}</td>
+                            <td>{{s.Inns}}</td>
+                            <td>{{s.Mat}}</td>
+    
+                            <!-- <td>{{s.key.country}}</td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    
+            <br />
+            <h4 class="tabhead">Bowling Performance</h4>
+            <div style="overflow-x:auto;">
+                <table class="table4" align="center">
+                    <thead>
+                        <tr>
+                            <!-- <th>50</th>
+                        <th>100</th> -->
+                            <th>League</th>
+                            <th>SR</th>
+                            <th>Econ</th>
+                            <!-- <th>6s</th>
+                        <th>4s</th> -->
+                            <th>Ave</th>
+                            <th>BBM</th>
+                            <th>BBI</th>
+                            <th>Wkts</th>
+                            <th>Runs</th>
+                            <th>Balls</th>
+                            <th>Inns</th>
+                            <th>Mat</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let s of fbowldata">
+                        <tr class="table4rowcol">
+                            <!-- <td>{{s.50}}</td> -->
+                            <!-- <td>{{s.100}}</td> -->
+                            <td>{{s.type}}</td>
+                            <td>{{s.SR}}</td>
+                            <td>{{s.Econ}}</td>
+                            <!--<td>{{s.6s}}</td>
+                            <td>{{s.4s}}</td>-->
+                            <td>{{s.Ave}}</td>
+                            <td>{{s.BBM}}</td>
+                            <td>{{s.BBI}}</td>
+                            <td>{{s.Wkts}}</td>
+                            <td>{{s.Runs}}</td>
+                            <td>{{s.Balls}}</td>
+                            <td>{{s.Inns}}</td>
+                            <td>{{s.Mat}}</td>
+    
+                            <!-- <td>{{s.key.country}}</td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- <br /><br /> -->
+            <!-- <div class="graph">
+                    <canvas id="linegraph">{{chart}}</canvas>
+                  </div> -->
+                  <br /><br />
+                  <i class="fa fa-heart" (click)="addFav()" style="font-size:45px;color:white;"></i>&nbsp;&nbsp;
+                  <br /><br />
+            <button class="button" (click)="addRec()">{{flipped}}</button><br /><br /><br />
+        </div>
+    
+    </section>
+    
+<!--footer started-->
+<footer class="page-footer font-small blue pt-4 ">
+    <div class="container-fluid text-center text-md-left">
+         <div class="row">
+             <div class="col-md-6 mt-md-0 mt-3">
+                 <h5 class="text-uppercase">Championing World Cricket</h5>
+                 <!-- <img class ="footerimg" src="../../assets/logoc.png"> -->
+                 <h1 class="titlefoot">CPlayer</h1>
+                 <p>Follow CPlayer On Social</p>
+                 <div>
+                     <a href='http://www.facebook.com'>
+                         <i class="fa fa-facebook-square" style="font-size:35px;color:white"></i>
+                     </a> &nbsp; &nbsp;
+                     <a href='http://www.youtube.com'>
+                         <i class="fa fa-youtube-play" style="font-size:35px;color:white"></i>
+                     </a> &nbsp; &nbsp;
+                     <a href='http://www.linkedin.com'>
+                         <i class="fa fa-linkedin-square" style="font-size:35px;color:white"></i>
+                     </a> &nbsp; &nbsp;
+                     <a href='http://www.instagram.com'>
+                         <i class="fa fa-instagram" style="font-size:35px;color:white"></i>
+                     </a> &nbsp; &nbsp;
+                 </div>
+             </div>
+             <hr class="clearfix w-100 d-md-none pb-3">
+             <div class="col-md-3 mb-md-0 mb-3 ">
+                 </div>
+             <div class="col-md-3 mb-md-0 mb-3 ">
+                 <h5 class="text-uppercase">Cricket News</h5><br>
+                 <ul class="list-unstyled">
+                     <!-- <li>
+                         <a href="https://www.espncricinfo.com/scores/" target="_blank">Live Scores Index</a>
+                     </li><br> -->
+                     <li>
+                         <a href="http://www.espncricinfo.com/ci/content/story/index.html" target="_blank">News Index</a>
+                     </li><br>
+                     <li>
+                         <a href="https://www.icc-cricket.com/champions-trophy/media-releases" target="_blank">Media Releases</a>
+                     </li><br>
+                     <li>
+                         <a href="https://www.icc-cricket.com/video/by-country" target="_blank">Video Home</a>
+                     </li><br>
+                     <li>
+                         <a href="http://www.espncricinfo.com/ci/content/image/index.html" target="_blank">Photos</a>
+                     </li><br>
+                 </ul>
+             </div>
+             <!-- <div class="col-md-3 mb-md-0 mb-3">
+                 <h5 class="text-uppercase">RANKINGS</h5><br>
+                 <ul class="list-unstyled">
+                     <li>
+                         <a href="https://www.icc-cricket.com/rankings/mens/overview">Overview</a>
+                     </li><br>
+                     <li>
+                         <a href="https://www.icc-cricket.com/rankings/mens/team-rankings/test">Team Rankings</a>
+                     </li><br>
+                     <li>
+                         <a href="https://www.icc-cricket.com/rankings/mens/player-rankings/test">Player Rankings</a>
+                     </li><br>
+                     <li>
+                         <a href="https://www.icc-cricket.com/rankings/about">About the Rankings</a>
+                     </li><br>
+                     <li>
+                         <a href="https://www.icc-cricket.com/rankings/faqs">Rankings FAQs</a>
+                     </li>
+                 </ul>
+             </div> -->
+         </div>
+     </div>
+     <div class="footer-copyright py-3">© 2020 Copyright:
+         <a class="footer_url" href="https://www.cricapi.com/"> CricketPlayer.com</a>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         Developed by: Rutul, Shreya, Suprita
+     </div>
+ 
+ </footer>
+ 
+<!--footer closed-->
+
+</html>

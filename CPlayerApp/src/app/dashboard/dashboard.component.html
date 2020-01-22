@@ -1,0 +1,236 @@
+<html>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light navheader">
+    <a class="navbar-brand" [routerLink]="['/dashboard']">
+        <!-- <div class="nav-link">CPlayer</div> -->
+        <img src="../../assets/logo.png" height="45%" width="50%"><b class="logo">Cricket Player</b>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse navheadercollapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/stastics']"href="/home">Home <span class="sr-only">(current)</span></a>
+            </li>&nbsp;&nbsp; -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/stastics']">Statistics</a>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/livematch']">LiveMatches</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/playerranking']">PlayerRanking</a>
+            </li>
+            <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>  -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">ContactUs</a>
+            </li>
+        </ul>
+
+
+        <!-- <form class="example" action="action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form> -->
+        <!-- <div class="search">
+            <form [formGroup]="searchForm" (ngSubmit)="searchSubmit()">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search: <i
+                        class="fa fa-search"></i></button>
+            </form>
+        </div> -->
+
+        <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)=login()>Login</button> -->
+        <button *ngIf="loginflag==true" class="btn btn-outline-success my-2 my-sm-0 logout" (click)="logoutSubmit()">Logout</button>
+           
+        <div *ngIf="userImage">
+                    <img class="rounded-circle" [src]="userImage" alt="..." height=50 *ngIf="userImage">
+        </div>
+        
+        <button *ngIf="loginflag==false" class="btn btn-outline-success my-2 my-sm-0" type="submit"
+            (click)=login()>Login</button>
+    </div>
+</nav>
+
+<section class="section1">
+    <br />
+    <br />
+    <div class="mattool1">
+        <br />
+            <form [formGroup]="searchForm" (ngSubmit)="searchSubmit()" class="content1">
+                    <input type="text" placeholder="Search for player" formControlName="search">
+                    <button class="search_btn" type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            
+            </div>
+   
+    
+            <br />
+    <mat-card *ngFor="let s of searchResultsImg" class="card_fav">
+
+        <mat-card-content><img src="{{s.imageurl}}" onerror="this.src='assets/default.png';" class="cardpic">
+        </mat-card-content>
+        <div class="card_data">
+            <!-- <mat-card-title class="card_content"><h3>{{s.fullName}} </h3></mat-card-title> -->
+            <mat-expansion-panel class="card_desc">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{s.fullName}}
+                    </mat-panel-title>
+                    <!-- <mat-panel-description>
+                            Type your name and age
+                          </mat-panel-description> -->
+                </mat-expansion-panel-header>
+                {{s.profile}}
+
+            </mat-expansion-panel><br />
+            <!-- <mat-card-content class="card_content">{{s.profile}}</mat-card-content><br /> -->
+            <mat-card-content class="card_content"><img class="readmore" src="../../assets/readmore2.png" (click)="knowmore(s.pid)">
+            </mat-card-content>
+        </div>
+        <!-- <mat-card-content><i class="fad fa-heart icon">Add to favourites</i></mat-card-content> -->
+        <!-- <br /><br /><br /> -->
+        <!-- <mat-card-content class="card_content"><button (click)="deleterec(s.pid)">Unrecommend</button></mat-card-content> -->
+    </mat-card>
+    <br />
+    <br />
+
+    
+
+    <div *ngIf="recflag==false">
+            <div class="rec">
+                    &nbsp;&nbsp;Most Recommended Players
+            </div>
+    
+        <mat-card *ngFor="let s of recsdata | paginate: { itemsPerPage: 4, currentPage: p, id:'p'}" class="card_fav2">
+            <div class="container">
+                <mat-card-content><img src="{{s.img}}" alt="Photo" class="image" (click)="details(s.pid)">
+                </mat-card-content>
+                <div class="middle">
+                <mat-card-title class="card_content">
+                    <h3 class="text" (click)="details(s.pid)">{{s.name}}</h3>
+                </mat-card-title>
+                <mat-card-content class="card_content"><img [src]="s.imgflag"> {{s.country}}</mat-card-content>
+                <!-- <mat-card-content class="card_content"><i class="fa fa-hand-o-right" aria-hidden="true" (click)="details(s.pid)" style="font-size:35px;color:rgb(31, 136, 36)"></i></mat-card-content> -->
+                </div>
+            </div>
+            </mat-card>
+    </div>
+    <div *ngIf="recflag==false">
+            <pagination-controls (pageChange)="p = $event" id="p"></pagination-controls>
+        </div>
+<br /><br /><br />
+
+<div *ngIf="recflag==false" class="news-div" >
+        <div class="rec">
+                &nbsp;&nbsp;Latest news
+             </div>
+             <br />
+        <!-- <mat-toolbar><b class="content">LATEST NEWS</b></mat-toolbar> -->
+    <section >
+        <mat-card  class="news-card" *ngFor="let news of newsList | paginate: { itemsPerPage: 4, currentPage: o, id:'o'} ">
+            <mat-card-title class="news-title">{{news.title}}</mat-card-title>
+            <mat-card-content class="news-desc"><marquee height="40px" width="100%" direction="left" scrollamount="10">{{news.description}}</marquee></mat-card-content>
+            <mat-card-content ><img class="news-image" src="{{news.urlToImage}}" onerror="this.src='assets/default.jpg';"></mat-card-content>
+            <mat-card-content>{{news.publishedAt}}</mat-card-content>
+            <br />
+        </mat-card>
+    </section>
+    <pagination-controls class="paginate" (pageChange)="o = $event" id="o"></pagination-controls>
+</div>
+<br /><br />
+</section>
+<!--footer started-->
+<footer class="page-footer font-small blue pt-4 ">
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+                <div class="col-md-6 mt-md-0 mt-3">
+                    <h5 class="text-uppercase">Championing World Cricket</h5>
+                    <!-- <img class ="footerimg" src="../../assets/logoc.png"> -->
+                    <h1 class="titlefoot">CPlayer</h1>
+                    <p>Follow CPlayer On Social</p>
+                    <div>
+                        <a href='http://www.facebook.com'>
+                            <i class="fa fa-facebook-square" style="font-size:35px;color:white"></i>
+                        </a> &nbsp; &nbsp;
+                        <a href='http://www.youtube.com'>
+                            <i class="fa fa-youtube-play" style="font-size:35px;color:white"></i>
+                        </a> &nbsp; &nbsp;
+                        <a href='http://www.linkedin.com'>
+                            <i class="fa fa-linkedin-square" style="font-size:35px;color:white"></i>
+                        </a> &nbsp; &nbsp;
+                        <a href='http://www.instagram.com'>
+                            <i class="fa fa-instagram" style="font-size:35px;color:white"></i>
+                        </a> &nbsp; &nbsp;
+                    </div>
+                </div>
+                <hr class="clearfix w-100 d-md-none pb-3">
+                <div class="col-md-3 mb-md-0 mb-3 ">
+                    </div>
+                <div class="col-md-3 mb-md-0 mb-3 ">
+                    <h5 class="text-uppercase">Cricket News</h5><br>
+                    <ul class="list-unstyled">
+                        <!-- <li>
+                            <a href="https://www.espncricinfo.com/scores/" target="_blank">Live Scores Index</a>
+                        </li><br> -->
+                        <li>
+                            <a href="http://www.espncricinfo.com/ci/content/story/index.html" target="_blank">News Index</a>
+                        </li><br>
+                        <li>
+                            <a href="https://www.icc-cricket.com/champions-trophy/media-releases" target="_blank">Media Releases</a>
+                        </li><br>
+                        <li>
+                            <a href="https://www.icc-cricket.com/video/by-country" target="_blank">Video Home</a>
+                        </li><br>
+                        <li>
+                            <a href="http://www.espncricinfo.com/ci/content/image/index.html" target="_blank">Photos</a>
+                        </li><br>
+                    </ul>
+                </div>
+                <!-- <div class="col-md-3 mb-md-0 mb-3">
+                    <h5 class="text-uppercase">RANKINGS</h5><br>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="https://www.icc-cricket.com/rankings/mens/overview">Overview</a>
+                        </li><br>
+                        <li>
+                            <a href="https://www.icc-cricket.com/rankings/mens/team-rankings/test">Team Rankings</a>
+                        </li><br>
+                        <li>
+                            <a href="https://www.icc-cricket.com/rankings/mens/player-rankings/test">Player Rankings</a>
+                        </li><br>
+                        <li>
+                            <a href="https://www.icc-cricket.com/rankings/about">About the Rankings</a>
+                        </li><br>
+                        <li>
+                            <a href="https://www.icc-cricket.com/rankings/faqs">Rankings FAQs</a>
+                        </li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+        <div class="footer-copyright py-3">© 2020 Copyright:
+            <a class="footer_url" href="https://www.cricapi.com/"> CricketPlayer.com</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Developed by: Rutul, Shreya, Suprita
+        </div>
+
+    </footer>
+    <!--footer closed-->
+
+
+</html>

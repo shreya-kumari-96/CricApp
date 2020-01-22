@@ -1,0 +1,213 @@
+.img_s{
+    height: 30px;
+    width: 30px;
+}
+.logo{
+  font-size:25px;
+}
+.btn
+{
+    font-size:20px !important;
+}
+.navheader
+{
+    background-color: black !important;
+    /* position: fixed; */
+}
+.nav-link
+{
+    color: white !important;
+    font-size: 20px !important;
+    padding-right: 20px !important;
+}
+.dropdown-toggle{
+    color: yellowgreen;
+    background-color: black;
+}
+.navheadercollapse
+{
+    margin-left: 200px;
+}
+.navheader a:hover
+{
+    background-color: black !important;
+}
+.search
+{
+  margin-right: 200px;
+  color: white;
+}
+.logout
+{
+  color: green;
+  margin-right: 30px;
+}
+.logout_btn
+{
+  border-radius: 50%;
+}
+
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Style the search field */
+  form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+  }
+  
+  /* Style the submit button */
+  form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+  }
+  
+  form.example button:hover {
+    background: #0b7dda;
+  }
+  
+  /* Clear floats */
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+form.example{
+    margin-right: 200px;
+}
+
+.section1
+{
+  width: 100%;
+    height: 600px;
+}
+.mattool1
+{
+background-image: url("../../assets/livescoresback1.jpeg");
+background-repeat: no-repeat;
+background-position: center; /* Center the image */
+background-repeat: no-repeat; /* Do not repeat the image */
+background-size: cover;
+padding:0px;
+ margin:0px;
+height: 70px;
+width:100%;
+background-attachment: fixed;
+/* text-align: center; */
+}  
+.content1
+{
+  margin-top:30px !important;
+  font-size: 35px;
+  color: white;
+  /* margin-left: 700px; */
+  margin-left: 17em;
+text-align: center;
+font-family: 'Kumar One', cursive !important;
+padding-top: 10% !important;
+padding:0px;
+}
+.card_fav{
+  border: 2px solid green;
+  height: 180px;
+  width:400px;
+  margin: 10px 0px;
+  box-shadow: 2px 2px 8px yellowgreen;
+  float: left;
+  margin: 40px;
+}
+.card_content
+{
+  font-size: 30px !important;
+}
+mat-card:hover
+{
+  cursor: pointer;
+}
+.box-2
+{
+  float: right;
+}
+
+
+/* Style the navigation menu */
+.navbar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
+
+/* Navigation links */
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  width: 10%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+  text-align: center; /* If you want the text to be centered */
+}
+
+/* Add a background color on mouse-over */
+.navbar a:hover {
+  background-color: rgb(56, 52, 52);
+}
+
+/* Style the current/active link */
+.navbar a.active {
+  background-color: #4CAF50;
+}
+
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+    width: 100%;
+    text-align: left; /* If you want the text to be left-aligned on small screens */
+  }
+}
+/* .tabledata
+{
+    border: 1px solid black;
+} */
+.footerimg{
+    height: 70px;
+    width: 70px;
+}
+.list-unstyled{
+    color: white;
+   
+} 
+.titlefoot{
+    color: green;
+}
+
+footer {
+    
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(26, 56, 17);
+    color: white;
+    text-align: center;
+  }
+  
+  a{
+      color: white;
+  }
+  .footer-copyright{
+    background-color:rgba(12, 3, 3, 0.836);
+  }

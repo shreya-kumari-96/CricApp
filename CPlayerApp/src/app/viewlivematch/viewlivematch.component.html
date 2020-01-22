@@ -1,0 +1,281 @@
+<html>
+    <head>
+    <link href="https://fonts.googleapis.com/css?family=Kumar+One&display=swap" rel="stylesheet">
+   </head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light navheader">
+    <a class="navbar-brand" [routerLink]="['/dashboard']">
+        <!-- <div class="nav-link">CPlayer</div> -->
+        <img src="../../assets/logo.png" height="45%" width="50%"><b class="logo">CricketPlayer</b>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse navheadercollapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item active">
+                <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+            </li>&nbsp;&nbsp; -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/livematch']">LiveMatches</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/playerranking']">PlayerRanking</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">ContactUs</a>
+            </li>
+        </ul>
+        <!-- <form class="example" action="action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form> -->
+        <div class="search">
+        <form  [formGroup]="searchForm" (ngSubmit)="searchSubmit()" >
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search: <i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)=login()>Login</button> -->
+    </div>
+</nav>
+<section *ngIf="startflag==false" class="section1_alt">
+    <!-- <div>
+        Match is not started yet !
+        </div> -->
+    </section>
+<section class="section1" *ngIf="startflag==true">
+        <div class="mattool1">
+                <br />
+            <b class="content1">LIVE MATCH SCORE</b>
+            </div>
+            <br />
+            <div>
+                    <mat-card  class="card_fav">
+                        <mat-card-title>
+                            <h3>{{team1}}</h3>
+                                <br />
+                                <h3>{{team2}}</h3>
+                                <br />
+                        </mat-card-title>
+                        
+                        <mat-card-content><h4>Toss winner team: {{tosswin}}</h4></mat-card-content>
+                            
+                    </mat-card>
+            </div>
+            <!-- <div class="headscore">
+<h3>{{team1}}</h3>
+<br />
+<h3>{{team2}}</h3>
+<br />
+<h4>Toss winner team: {{tosswin}}</h4>
+</div> -->
+<br />
+<mat-accordion>
+    <mat-expansion-panel >
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{team1namebat}}
+            </mat-panel-title>
+            </mat-expansion-panel-header>
+<table align="center">
+    <thead>
+        <tr>
+            <th>Batsman</th>
+            <th></th>
+            <th>R</th>
+            <th>B</th>
+            <th>4s</th>
+            <th>6s</th>
+            <th>SR</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let r of team1playersbat">
+        <tr>
+            <td>{{r.batsman}}</td>
+            <td>{{r.info}}</td>
+            <td>{{r.R}}</td>
+            <td>{{r.B}}</td>
+            <td>{{r.fours}}</td>
+            <td>{{r.sixs}}</td>
+            <td>{{r.SR}}</td>
+        </tr>
+    </tbody>
+</table>
+<br /><br />
+<table align="center">
+    <thead>
+        <tr>
+            <th>Bowling</th>
+            <th>O</th>
+            <th>M</th>
+            <th>R</th>
+            <th>W</th>
+            <th>Econ</th>
+            <th>0s</th>
+            <th>4s</th>
+            <th>6s</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let r of team1playersball">
+        <tr>
+            <td>{{r.bowler}}</td>
+            <td>{{r.O}}</td>
+            <td>{{r.M}}</td>
+            <td>{{r.R}}</td>
+            <td>{{r.W}}</td>
+            <td>{{r.Econ}}</td>
+            <td>{{r.zeros}}</td>
+            <td>{{r.fours}}</td>
+            <td>{{r.sixs}}</td>
+        </tr>
+    </tbody>
+</table>
+</mat-expansion-panel>
+</mat-accordion>
+<br />
+<br />
+<br />
+<mat-accordion>
+    <mat-expansion-panel >
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{team2namebat}}
+            </mat-panel-title>
+            </mat-expansion-panel-header>
+<table align="center">
+    <thead>
+        <tr>
+            <th>Batsman</th>
+            <th></th>
+            <th>R</th>
+            <th>B</th>
+            <th>4s</th>
+            <th>6s</th>
+            <th>SR</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let r of team2playersbat">
+        <tr>
+            <td>{{r.batsman}}</td>
+            <td>{{r.info}}</td>
+            <td>{{r.R}}</td>
+            <td>{{r.B}}</td>
+            <td>{{r.fours}}</td>
+            <td>{{r.sixs}}</td>
+            <td>{{r.SR}}</td>
+        </tr>
+    </tbody>
+</table>
+<br /><br />
+<table align="center">
+    <thead>
+        <tr>
+            <th>Bowling</th>
+            <th>O</th>
+            <th>M</th>
+            <th>R</th>
+            <th>W</th>
+            <th>Econ</th>
+            <th>0s</th>
+            <th>4s</th>
+            <th>6s</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let r of team2playersball">
+        <tr>
+            <td>{{r.bowler}}</td>
+            <td>{{r.O}}</td>
+            <td>{{r.M}}</td>
+            <td>{{r.R}}</td>
+            <td>{{r.W}}</td>
+            <td>{{r.Econ}}</td>
+            <td>{{r.zeros}}</td>
+            <td>{{r.fours}}</td>
+            <td>{{r.sixs}}</td>
+        </tr>
+    </tbody>
+</table>
+</mat-expansion-panel>
+</mat-accordion>
+<br />
+<br />
+<h4>Man of the match: {{manofmatch}}</h4>
+<br /><br />
+</section>
+<footer class="page-footer font-small blue pt-4 ">
+    <div class="container-fluid text-center text-md-left">
+         <div class="row">
+             <div class="col-md-6 mt-md-0 mt-3">
+                 <h5 class="text-uppercase">Championing World Cricket</h5>
+                 <!-- <img class ="footerimg" src="../../assets/logoc.png"> -->
+                 <h1 class="titlefoot">CPlayer</h1>
+                 <p>Follow CPlayer On Social</p>
+                 <div>
+                     <a href='http://www.facebook.com'>
+                         <i class="fa fa-facebook-square" style="font-size:35px;color:white"></i>
+                     </a> &nbsp; &nbsp;
+                     <a href='http://www.youtube.com'>
+                         <i class="fa fa-youtube-play" style="font-size:35px;color:white"></i>
+                     </a> &nbsp; &nbsp;
+                     <a href='http://www.linkedin.com'>
+                         <i class="fa fa-linkedin-square" style="font-size:35px;color:white"></i>
+                     </a> &nbsp; &nbsp;
+                     <a href='http://www.instagram.com'>
+                         <i class="fa fa-instagram" style="font-size:35px;color:white"></i>
+                     </a> &nbsp; &nbsp;
+                 </div>
+             </div>
+             <hr class="clearfix w-100 d-md-none pb-3">
+             <div class="col-md-3 mb-md-0 mb-3 ">
+                 </div>
+             <div class="col-md-3 mb-md-0 mb-3 ">
+                 <h5 class="text-uppercase">Cricket News</h5><br>
+                 <ul class="list-unstyled">
+                     <!-- <li>
+                         <a href="https://www.espncricinfo.com/scores/" target="_blank">Live Scores Index</a>
+                     </li><br> -->
+                     <li>
+                         <a href="http://www.espncricinfo.com/ci/content/story/index.html" target="_blank">News Index</a>
+                     </li><br>
+                     <li>
+                         <a href="https://www.icc-cricket.com/champions-trophy/media-releases" target="_blank">Media Releases</a>
+                     </li><br>
+                     <li>
+                         <a href="https://www.icc-cricket.com/video/by-country" target="_blank">Video Home</a>
+                     </li><br>
+                     <li>
+                         <a href="http://www.espncricinfo.com/ci/content/image/index.html" target="_blank">Photos</a>
+                     </li><br>
+                 </ul>
+             </div>
+             <!-- <div class="col-md-3 mb-md-0 mb-3">
+                 <h5 class="text-uppercase">RANKINGS</h5><br>
+                 <ul class="list-unstyled">
+                     <li>
+                         <a href="https://www.icc-cricket.com/rankings/mens/overview">Overview</a>
+                     </li><br>
+                     <li>
+                         <a href="https://www.icc-cricket.com/rankings/mens/team-rankings/test">Team Rankings</a>
+                     </li><br>
+                     <li>
+                         <a href="https://www.icc-cricket.com/rankings/mens/player-rankings/test">Player Rankings</a>
+                     </li><br>
+                     <li>
+                         <a href="https://www.icc-cricket.com/rankings/about">About the Rankings</a>
+                     </li><br>
+                     <li>
+                         <a href="https://www.icc-cricket.com/rankings/faqs">Rankings FAQs</a>
+                     </li>
+                 </ul>
+             </div> -->
+         </div>
+     </div>
+     <div class="footer-copyright py-3">© 2020 Copyright:
+         <a class="footer_url" href="https://www.cricapi.com/"> CricketPlayer.com</a>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         Developed by: Rutul, Shreya, Suprita
+     </div>
+ 
+ </footer>
+    <!--footer closed-->
+    </html>

@@ -1,0 +1,8 @@
+com/example/demo/exception/RecommendationAlreadyExistsException.class
+com/example/demo/App.class
+com/example/demo/controller/RecommendationController.class
+com/example/demo/exception/RecommendationNotFoundException.class
+com/example/demo/dao/RecommendationDAO.class
+com/example/demo/service/RecommendationServiceImpl.class
+com/example/demo/service/RecommendationService.class
+com/example/demo/model/Recommendation.class
